@@ -7,7 +7,6 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Routes sets up the routing.
 func Routes(router *echo.Group) {
 	router.GET("/forms", getSample)
 	router.POST("/forms", createSample)

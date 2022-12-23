@@ -4,9 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	// "pkg/controller/sampleroute"
-	// "pkg/controller"
-
 	sampleroutes "app/pkg/controller/sampleroute"
 
 	"github.com/labstack/echo"
