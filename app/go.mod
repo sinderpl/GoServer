@@ -1,4 +1,4 @@
-module app
+module github.com/sinderpl/GoServer/app
 
 go 1.18
 

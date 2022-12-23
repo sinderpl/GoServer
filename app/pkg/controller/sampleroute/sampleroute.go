@@ -7,24 +7,24 @@ import (
 )
 
 func Routes(router *echo.Group) {
-	router.GET("/forms", getSample)
-	router.POST("/forms", createSample)
-	router.PATCH("/forms/:id", updateSample)
-	router.DELETE("/forms/:id", deleteSample)
+	router.GET("/sample", getSample)
+	router.POST("/sample", createSample)
+	router.PATCH("/sample/:id", updateSample)
+	router.DELETE("/sample/:id", deleteSample)
 }
 
 func getSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Hello, World Get !")
+	return c.JSON(http.StatusOK, "Sample Get !")
 }
 
 func createSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Hello, World Create!")
+	return c.JSON(http.StatusOK, "Sample Create!")
 }
 
 func updateSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Hello, World Set !")
+	return c.JSON(http.StatusOK, "Sample Set !")
 }
 
 func deleteSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Hello, World Delete !")
+	return c.JSON(http.StatusOK, "Sample Delete !")
 }

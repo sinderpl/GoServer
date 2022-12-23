@@ -3,7 +3,8 @@ package routes
 import (
 	"os"
 
-	sampleroutes "app/pkg/controller/sampleroute"
+	// sampleroutes "app/pkg/controller/sampleroute"
+	sampleroutes "github.com/sinderpl/GoServer/app/pkg/controller/sampleroute"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
