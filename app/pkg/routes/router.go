@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"os"
 
 	sampleroutes "app/pkg/controller/sampleroute"
@@ -14,7 +13,6 @@ func InitializeRouter() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	fmt.Println("Hello, World !")
 
 	sampleroutes.Routes(e.Group(("")))
 

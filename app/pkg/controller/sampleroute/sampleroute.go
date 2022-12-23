@@ -1,7 +1,6 @@
 package sampleroutes
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -15,7 +14,6 @@ func Routes(router *echo.Group) {
 }
 
 func getSample(c echo.Context) error {
-	fmt.Println("Hello, World ! get sample")
 	return c.JSON(http.StatusOK, "Hello, World Get !")
 }
 
