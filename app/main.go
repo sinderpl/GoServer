@@ -1,55 +1,37 @@
-// package main
-
-// import (
-//     "fmt"
-//     "html"
-//     "log"
-//     "net/http"
-// )
-
-// func main() {
-
-//     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-//         fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-//     })
-
-//     http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request){
-//         fmt.Fprintf(w, "Hi")
-//     })
-
-//     log.Fatal(http.ListenAndServe(":8081", nil))
-
-// }
-
 package main
 
-import (
-	"net/http"
-	"os"
+// "net/http"
 
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+// "github.com/labstack/echo/v4"
+// "github.com/labstack/echo/v4/middleware"
+import (
+	// "github.com/labstack/echo/v4"
+	"app/pkg/routes"
 )
 
 func main() {
 
-	e := echo.New()
+	routes.InitializeRouter()
 
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
+	// initializeRouter()
 
-	e.GET("/", func(c echo.Context) error {
-		return c.HTML(http.StatusOK, "Hello, Docker! <3")
-	})
+	// e := echo.New()
 
-	e.GET("/ping", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, struct{ Status string }{Status: "OK"})
-	})
+	// e.Use(middleware.Logger())
+	// e.Use(middleware.Recover())
 
-	httpPort := os.Getenv("HTTP_PORT")
-	if httpPort == "" {
-		httpPort = "8080"
-	}
+	// e.GET("/", func(c echo.Context) error {
+	// 	return c.HTML(http.StatusOK, "Hello, Docker! <3")
+	// })
 
-	e.Logger.Fatal(e.Start(":" + httpPort))
+	// e.GET("/ping", func(c echo.Context) error {
+	// 	return c.JSON(http.StatusOK, struct{ Status string }{Status: "OK"})
+	// })
+
+	// httpPort := os.Getenv("HTTP_PORT")
+	// if httpPort == "" {
+	// 	httpPort = "8080"
+	// }
+
+	// e.Logger.Fatal(e.Start(":" + httpPort))
 }
