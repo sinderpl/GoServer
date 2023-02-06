@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo"
 )
@@ -21,7 +22,8 @@ type Sample struct {
 }
 
 type RequestBody struct {
-	UserName string `json:"userName,omitempty"`
+	UserName   string `json:"userName,omitempty"`
+	SampleName string `json:"sampleName,omitempty"`
 }
 
 type StatusResponse struct {
@@ -68,8 +70,26 @@ func createSample(c echo.Context) error {
 
 func updateSample(c echo.Context) error {
 
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err != nil {
+
+	}
+
+	requestBody := &RequestBody{}
+
+	err = c.Bind(requestBody)
+	if err != nil {
+		return err
+	}
+
+	sample := Sample{
+		ID:   id,
+		Name: requestBody.SampleName,
+	}
+
 	body := &StatusResponse{
 		Message: "Sample Set !",
+		Sample:  sample,
 	}
 
 	return c.JSON(http.StatusOK, body)
