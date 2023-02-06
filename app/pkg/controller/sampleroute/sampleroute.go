@@ -57,7 +57,7 @@ func createSample(c echo.Context) error {
 	id := rand.Int63()
 	newObject := Sample{
 		ID:   id,
-		Name: fmt.Sprintf("New Object %d", id),
+		Name: requestBody.SampleName,
 	}
 
 	body := &StatusResponse{
