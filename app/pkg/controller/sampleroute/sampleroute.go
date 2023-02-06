@@ -13,18 +13,46 @@ func Routes(router *echo.Group) {
 	router.DELETE("/sample/:id", deleteSample)
 }
 
+type RequestBody struct {
+}
+
+type StatusResponse struct {
+	Message string
+}
+ß
 func getSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Sample Get !")
+	_ = &RequestBody{}
+
+	body := &StatusResponse{
+		Message: "Sample Get !",
+	}
+
+	return c.JSON(http.StatusOK, body)
 }
 
 func createSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Sample Create!")
+
+	body := &StatusResponse{
+		Message: "Sample Create !",
+	}
+
+	return c.JSON(http.StatusOK, body)
 }
 
 func updateSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Sample Set !")
+
+	body := &StatusResponse{
+		Message: "Sample Set !",
+	}
+
+	return c.JSON(http.StatusOK, body)
 }
 
 func deleteSample(c echo.Context) error {
-	return c.JSON(http.StatusOK, "Sample Delete !")
+
+	body := &StatusResponse{
+		Message: "Sample Delete !",
+	}
+
+	return c.JSON(http.StatusOK, body)
 }
