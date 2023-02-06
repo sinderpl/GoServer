@@ -31,12 +31,20 @@ type StatusResponse struct {
 	Sample  Sample `json:"sample,omitempty"`
 }
 
+type ErrorResponse struct {
+	Title   string `json:"title"`
+	Message string `json:"message"`
+}
+
 func getSample(c echo.Context) error {
 	requestBody := &RequestBody{}
 
 	err := c.Bind(requestBody)
 	if err != nil {
-		return err
+		return c.JSON(http.StatusNotFound, ErrorResponse{
+			Title:   "invalid request body",
+			Message: "body could not be parsed",
+		})
 	}
 
 	body := &StatusResponse{
@@ -51,7 +59,10 @@ func createSample(c echo.Context) error {
 
 	err := c.Bind(requestBody)
 	if err != nil {
-		return err
+		return c.JSON(http.StatusNotFound, ErrorResponse{
+			Title:   "invalid request body",
+			Message: "body could not be parsed",
+		})
 	}
 
 	id := rand.Int63()
@@ -72,15 +83,20 @@ func updateSample(c echo.Context) error {
 
 	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
-		// TODO fix error handling
-		return err
+		return c.JSON(http.StatusNotFound, ErrorResponse{
+			Title:   "invalid parameter",
+			Message: "id must be numerical",
+		})
 	}
 
 	requestBody := &RequestBody{}
 
 	err = c.Bind(requestBody)
 	if err != nil {
-		return err
+		return c.JSON(http.StatusNotFound, ErrorResponse{
+			Title:   "invalid request body",
+			Message: "body could not be parsed",
+		})
 	}
 
 	sample := Sample{
@@ -100,8 +116,10 @@ func deleteSample(c echo.Context) error {
 
 	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
-		// TODO fix error handling
-		return err
+		return c.JSON(http.StatusNotFound, ErrorResponse{
+			Title:   "invalid parameter",
+			Message: "id must be numerical",
+		})
 	}
 
 	body := &StatusResponse{
