@@ -17,7 +17,7 @@ func Routes(router *echo.Group) {
 
 type Sample struct {
 	ID   int64  `json:"ID"`
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type RequestBody struct {
@@ -25,8 +25,8 @@ type RequestBody struct {
 }
 
 type StatusResponse struct {
-	Message string `json:"message"`
-	Sample  Sample `json:"sample"`
+	Message string `json:"message,omitempty"`
+	Sample  Sample `json:"sample,omitempty"`
 }
 
 func getSample(c echo.Context) error {
