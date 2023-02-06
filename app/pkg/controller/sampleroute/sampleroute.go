@@ -17,7 +17,7 @@ func Routes(router *echo.Group) {
 }
 
 type Sample struct {
-	ID   int64  `json:"ID"`
+	ID   int64  `json:"ID,omitempty"`
 	Name string `json:"name,omitempty"`
 }
 
@@ -72,7 +72,8 @@ func updateSample(c echo.Context) error {
 
 	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
-
+		// TODO fix error handling
+		return err
 	}
 
 	requestBody := &RequestBody{}
@@ -97,8 +98,14 @@ func updateSample(c echo.Context) error {
 
 func deleteSample(c echo.Context) error {
 
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err != nil {
+		// TODO fix error handling
+		return err
+	}
+
 	body := &StatusResponse{
-		Message: "Sample Delete !",
+		Message: fmt.Sprintf("Sample Deleted ID: %d", id),
 	}
 
 	return c.JSON(http.StatusOK, body)
