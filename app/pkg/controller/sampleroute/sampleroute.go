@@ -1,6 +1,7 @@
 package sampleroutes
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -14,17 +15,23 @@ func Routes(router *echo.Group) {
 }
 
 type RequestBody struct {
+	UserName string `json:"userName"`
 }
 
 type StatusResponse struct {
-	Message string
+	Message string `json:"message"`
 }
-ß
+
 func getSample(c echo.Context) error {
-	_ = &RequestBody{}
+	requestBody := &RequestBody{}
+
+	err := c.Bind(requestBody)
+	if err != nil {
+		return err
+	}
 
 	body := &StatusResponse{
-		Message: "Sample Get !",
+		Message: fmt.Sprintf("Sample Get ! User name : %s", requestBody.UserName),
 	}
 
 	return c.JSON(http.StatusOK, body)
