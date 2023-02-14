@@ -15,6 +15,7 @@ func InitializeRouter() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	// Route registering
 	sampleroutes.Routes(e.Group(("")))
 
 	httpPort := os.Getenv("HTTP_PORT")
