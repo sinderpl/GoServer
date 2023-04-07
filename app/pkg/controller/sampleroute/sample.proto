@@ -2,6 +2,11 @@ syntax = "proto3";
 
 package sampleroutes;
 
+option go_package = "github.com/sinderpl/GoServer/app/pkg/routes";
+
+// Generate
+// protoc --proto_path=[Absolute DIR PATH] --go_out=[Absolute DIR PATH] sample.proto
+
 message Sample {
   string ID = 1;
   string Name = 2;
