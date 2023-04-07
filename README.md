@@ -22,3 +22,4 @@
 - [] RabbitMQ setup, connect to other microservices
 - [] DDOS protections,  rate limiting 
 - [] Update documentation, architecure etc
+- [] GRPC
