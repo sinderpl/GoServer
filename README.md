@@ -23,3 +23,4 @@
 - [] DDOS protections,  rate limiting 
 - [] Update documentation, architecure etc
 - [] GRPC
+- [] Look into exporting Postman collections https://pkg.go.dev/github.com/rbretecher/go-postman-collection#section-readme
