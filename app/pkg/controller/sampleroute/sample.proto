@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package sampleroutes;
+
+message Sample {
+  string ID = 1;
+  string Name = 2;
+}
+
+
+
